@@ -1,5 +1,11 @@
 #include "binary_trees.h"
 
+/**
+ * binary_tree_insert_left - insert nodes in the left
+ * @parent: the parent to insert a node in its left node
+ * @value: the value of the node
+ * Return: inserted node or NULL if it failes
+ */
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
     binary_tree_t *node = malloc(sizeof(binary_tree_t));
