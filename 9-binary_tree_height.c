@@ -7,56 +7,11 @@
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-    size_t height = 0;
-    size_t height1 = 0;
-    size_t height2 = 0;
-    binary_tree_t *node1;
-    binary_tree_t *node2;
-
     if (tree == NULL)
-        return (0);
+        return (-1);
 
-    /* first check */
-    if (tree->left)
-        node1 = tree->left;
-    else if (tree->right)
-        node1 = tree->right;
-    else
-        return (height);
+    size_t lh = binary_tree_height(tree->left);
+    size_t rh = binary_tree_height(tree->right);
 
-    while (node1)
-    {
-        height1++;
-        if (node1->left)
-            node1 = node1->left;
-        else if (node1->right)
-            node1 = node1->right;
-        else
-            node1 = NULL;
-    }
-
-    /* secend check */
-    if (tree->right)
-        node2 = tree->right;
-    else if (tree->left)
-        node2 = tree->left;
-
-    while (node2)
-    {
-        height2++;
-        if (node2->right)
-            node2 = node2->right;
-        else if (node2->left)
-            node2 = node2->left;
-        else
-            node2 = NULL;
-    }
-
-    /* copmare heigths*/
-    if (height1 > height2)
-        height = height1;
-    else
-        height = height2;
-
-    return (height);
+    return (lh > rh ? lh + 1 : rh + 1);
 }
